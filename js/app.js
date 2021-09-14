@@ -41,6 +41,26 @@ function displayEmployees(employeeData) {
     `;
   });
   gridContainer.innerHTML = employeeHTML;
+
+  //Searchbar
+const search = document.querySelector('#searchBar');
+const employeeDatas = document.querySelectorAll('.card h2');
+
+const handleSearch = event => {
+  const searchTerm = event.target.value.toLowerCase();
+
+  employeeDatas.forEach(boxData => {
+    const text = boxData.textContent.toLowerCase();
+    const box = boxData.parentElement.parentElement;
+
+    if(text.includes(searchTerm)) {
+      box.style.display = "";
+    } else {
+      box.style.display = "none";
+    }
+  });
+}
+search.addEventListener('keyup', handleSearch);
 }
 
 //__________________________________________________________________________________________________________________
@@ -131,25 +151,7 @@ arrowBack.addEventListener("click", () => {
   cardBack();
 });
 
-//Searchbar
-const search = document.querySelector('#searchBar');
-const employeeData = document.querySelectorAll('.text-container h2');
 
-const handleSearch = event => {
-  const searchTerm = event.target.value.toLowerCase();
-
-  employeeData.forEach(boxData => {
-    const text = boxData.textContent.toLowerCase();
-    const box = boxData.parentElement;
-
-    if(text.includes(searchTerm)) {
-      box.style.display = "block";
-    } else {
-      box.style.display = "none";
-    }
-  });
-}
-search.addEventListener('keyup', handleSearch);
 
 
 
