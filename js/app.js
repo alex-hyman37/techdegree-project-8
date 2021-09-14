@@ -132,11 +132,36 @@ arrowBack.addEventListener("click", () => {
 });
 
 //Searchbar
-searchBar.addEventListener("keyup", (e) => {
-  const searchString = e.target.value.toLowerCase();
+const search = document.querySelector('#searchBar');
+const employeeData = document.querySelectorAll('.text-container h2');
 
-  const filteredCharacters = employees.filter((character) => {
-    return character.name.includes(searchString);
+const handleSearch = event => {
+  const searchTerm = event.target.value.toLowerCase();
+
+  employeeData.forEach(boxData => {
+    const text = boxData.textContent.toLowerCase();
+    const box = boxData.parentElement;
+
+    if(text.includes(searchTerm)) {
+      box.style.display = "block";
+    } else {
+      box.style.display = "none";
+    }
   });
-  displayEmployees(filteredCharacters);
-});
+}
+search.addEventListener('keyup', handleSearch);
+
+
+
+
+
+
+
+// searchBar.addEventListener("keyup", (e) => {
+//   const searchString = e.target.value.toLowerCase();
+
+//   const filteredCharacters = employees.filter((character) => {
+//     return character.name.includes(searchString);
+//   });
+//   displayEmployees(filteredCharacters);
+// });
