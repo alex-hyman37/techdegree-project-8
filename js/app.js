@@ -6,6 +6,7 @@ const gridContainer = document.querySelector(".grid-container");
 const overlay = document.querySelector(".overlay");
 const modalContainer = document.querySelector(".modal-content");
 const modalClose = document.querySelector(".modal-close");
+let index;
 
 // fetch data from API
 fetch(urlAPI)
@@ -105,7 +106,7 @@ gridContainer.addEventListener("click", (e) => {
   if (e.target !== gridContainer) {
     // select the card element based on its proximity to the actual element clicked
     const card = e.target.closest(".card");
-    const index = card.getAttribute("data-index");
+    index = card.getAttribute("data-index");
 
     displayModal(index);
   }
@@ -119,28 +120,23 @@ modalClose.addEventListener("click", () => {
 const arrowForward = document.querySelector(".arrow-forward");
 const arrowBack = document.querySelector(".arrow-back");
 let card = document.getElementsByClassName("card");
-let indexCards = 0;
 
 function cardNext() {
-  if (indexCards == card.length - 1) {
-    indexCards = 0;
+  if (index == card.length - 1) {
+    index = 0;
   } else {
-    indexCards++;
-    setTimeout(function () {
-      displayModal(indexCards);
-    }, 100);
+    index++;
   }
+  displayModal(index);
 }
 
 function cardBack() {
-  if (indexCards == 0) {
-    indexCards == card.length - 1;
+  if (index <= 0) {
+    index = card.length - 1;
   } else {
-    indexCards--;
-    setTimeout(function () {
-      displayModal(indexCards);
-    }, 100);
+    index--;
   }
+  displayModal(index);
 }
 
 arrowForward.addEventListener("click", () => {
@@ -151,19 +147,3 @@ arrowBack.addEventListener("click", () => {
   cardBack();
 });
 
-
-
-
-
-
-
-
-
-// searchBar.addEventListener("keyup", (e) => {
-//   const searchString = e.target.value.toLowerCase();
-
-//   const filteredCharacters = employees.filter((character) => {
-//     return character.name.includes(searchString);
-//   });
-//   displayEmployees(filteredCharacters);
-// });
