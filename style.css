@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Quattrocento Sans', sans-serif;
+  font-family: "Quattrocento Sans", sans-serif;
 }
 
 body {
@@ -58,10 +58,6 @@ h1 {
   color: #989696;
 }
 
-
-
-
-
 /* Overlay */
 .overlay {
   position: fixed;
@@ -83,7 +79,7 @@ h1 {
   padding: 30px 20px;
 }
 
-.arrow-forward{
+.arrow-forward {
   position: absolute;
   right: 3%;
   top: 50%;
@@ -102,7 +98,6 @@ h1 {
 .modal-content {
   line-height: 40px;
 }
-
 
 .modal-close {
   position: absolute;
